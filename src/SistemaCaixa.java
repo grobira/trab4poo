@@ -14,13 +14,12 @@ public class SistemaCaixa {
 		Socket socket;
 		
 		try{
-			listener = new ServerSocket(8080);
+			listener = new ServerSocket(12345);
 
 			while(true){
 				socket = listener.accept();
 				Thread t = new Thread(new ConectServer(armazen, cads, socket));
-				t.start();
-			
+				t.start();			
 			}
 		}catch (IOException e) {
             System.err.println("Unable to process client request");
