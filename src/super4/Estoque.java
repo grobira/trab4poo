@@ -1,5 +1,7 @@
+package super4;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
@@ -38,6 +40,15 @@ public class Estoque {
 		}
 	}
 	
+	public Produto searchProduto(String nome){
+		for(Produto p : produtosCadastrados){
+			if(p.getNome().equals(nome)){
+				return p;
+			}
+		}
+		return null;
+	}
+	
 	
 	public void adicionaProduto(Produto p){
 		produtosCadastrados.add(p);
@@ -51,6 +62,28 @@ public class Estoque {
 			pw.println(p.toStringCSV());
 			pw.close();
 		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void rewrite(){
+		File file = new File("src/produtos.csv");
+		file.delete();
+		
+		try {
+			FileWriter arq = new FileWriter("src/produtos.csv");
+			arq.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		try {
+			PrintWriter pw = new PrintWriter(new FileOutputStream(
+					"src/produtos.csv"));
+			for (Produto p : produtosCadastrados) {
+				pw.println(p.toString());
+			}
+			pw.close();
+		}catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
 	}

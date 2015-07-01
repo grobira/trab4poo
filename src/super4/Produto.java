@@ -1,4 +1,4 @@
-
+package super4;
 
 public class Produto {
 	
@@ -63,6 +63,12 @@ public class Produto {
 
 	public String getFornecedor() {
 		return fornecedor;
+	}
+	
+	public boolean disponibilidade(int quant){
+		if(this.quantidade < quant)
+			return false;		
+		return true;
 	}
 	
 	public String print(){

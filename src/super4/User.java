@@ -1,4 +1,4 @@
-
+package super4;
 public class User {
 	private String nome;
 	private String endereco;

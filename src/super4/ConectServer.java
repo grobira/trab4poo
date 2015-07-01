@@ -1,3 +1,4 @@
+package super4;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -38,6 +39,7 @@ public class ConectServer implements Runnable {
 	private void processCommand(String str) {
 		String[] values = str.split(",");
 		int op = Integer.parseInt(values[0]);
+		int rw = 0;
 		boolean result;
 		
 		if(op == 1){
@@ -66,25 +68,61 @@ public class ConectServer implements Runnable {
 		}else if(op == 3){
 			try {
 				out = new PrintWriter(s.getOutputStream(), true);
-				int i = 0;
-				while(i < e.produtosCadastrados.size()){
-					out.print(e.produtosCadastrados.get(i).print());
-					i++;
+				for(Produto p : e.produtosCadastrados){
+					out.print(p.print());
 				}
 				out.flush();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+		}else if(op == 4){
+			try {
+				out = new PrintWriter(s.getOutputStream(), true);
+				
+				Produto p = procuraProduto(values[1]);
+				if(p != null){
+					result = verificaDisponibilidade(Integer.parseInt(values[2]), p);
+					if(result){
+						p.setQuantidade(p.getQuantidade() - Integer.parseInt(values[2]));
+						out.println("Compra efetuada com sucesso!\nValor parcial : " + p.getPreco() +"\nValor total da compra : " + p.getPreco()*Integer.parseInt(values[2]));
+						rw = 1;
+					}else
+						out.println("Quantidade indisponivel! Temos apenas " + p.getQuantidade());
+				}else
+					out.println("Produto não cadastrado no sistema!");
+				
+				
+				out.flush();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		if(rw == 1){
+			rewrite();
 		}
 		
 	}
 	
+	private void rewrite(){
+		e.rewrite();
+	}
+	
 	public boolean login(String lg, String sn){
 		User u = c.searchUser(lg);
-		if(u != null){
+		if(u != null)
 			return u.validaLogin(sn);
-		}
 		return false;
+	}
+	
+	public Produto procuraProduto(String nome){
+		Produto p = e.searchProduto(nome);
+		if( p != null)
+			return p;
+		return null;
+	}
+	
+	public boolean verificaDisponibilidade(int quant, Produto p){
+		return p.disponibilidade(quant);
 	}
 
 }

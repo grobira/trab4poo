@@ -1,3 +1,4 @@
+package super4;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -56,9 +57,9 @@ public class Cadastros {
 	}
 
 	public User searchUser(String nome){
-		for(int i = 0 ; i < users.size(); i++){
-			if(users.get(i).getNome().equals(nome)){
-				return users.get(i);
+		for(User u : users){
+			if(u.getNome().equals(nome)){
+				return u;
 			}
 		}
 		return null;
