@@ -24,6 +24,18 @@ public class User {
 		return false;
 	}
 	
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
 	public String toStringCSV(){
 		String str = nome + "," + endereco + "," + telefone + "," + email + "," + ID + "," + senha;
 		return str;

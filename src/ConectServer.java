@@ -32,12 +32,43 @@ public class ConectServer implements Runnable {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
-		
-
 	}
+	
+	
 	private void processCommand(String str) {
-		System.out.println(str);
+		String[] values = str.split(",");
+		int op = Integer.parseInt(values[0]);
+		boolean result;
+		
+		if(op == 1){
+			result = login(values[1], values[2]);
+			System.out.println("entrou na op");
+			try {
+				out = new PrintWriter(s.getOutputStream(), true);
+				
+				if(result){
+					out.println("Login accepted!!");
+				}else
+					out.println("Login denied!!");
+				out.flush();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}		
+			
+		}else if(op == 2){
+			
+		}else if(op == 3){
+			
+		}
+		
+	}
+	
+	public boolean login(String lg, String sn){
+		User u = c.searchUser(lg);
+		if(u != null){
+			return u.validaLogin(sn);
+		}
+		return false;
 	}
 
 }

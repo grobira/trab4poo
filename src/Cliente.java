@@ -13,36 +13,29 @@ public class Cliente {
 		
 		
 		String command = op.escolheComando();
-		
-		
-		try {
-			Socket socket = new Socket("127.0.0.1", 12345);
-			PrintWriter pw = new PrintWriter(socket.getOutputStream(), true);
-			pw.println(command);
-			pw.flush();
-			socket.close();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		String resp = "";
-		String aux;
 		Socket socket;
+		PrintWriter pw;
+		BufferedReader br;
+		String resp;
 		
 		try {
 			socket = new Socket("127.0.0.1", 12345);
-			BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+			pw = new PrintWriter(socket.getOutputStream(), true);
+			br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+			pw.println(command);
+			pw.flush();
+
 			
-			while((aux = br.readLine()) != null){
-				resp.concat(aux);
+			while((resp = br.readLine()) != null){
+				System.out.println(resp);
 			}
+			socket.close();
 		} catch (UnknownHostException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		  
+		
 
 	}
 }

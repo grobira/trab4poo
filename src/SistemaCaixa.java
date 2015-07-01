@@ -10,6 +10,8 @@ public class SistemaCaixa {
 		Estoque armazen = new Estoque();
 		Cadastros cads = new Cadastros();
 		
+		cads.adicionaUser(new User("robira,fodase,90900909,grobira,1,robira"));
+		
 		ServerSocket listener;
 		Socket socket;
 		
@@ -17,6 +19,7 @@ public class SistemaCaixa {
 			listener = new ServerSocket(12345);
 
 			while(true){
+				System.out.println("Waiting...");
 				socket = listener.accept();
 				Thread t = new Thread(new ConectServer(armazen, cads, socket));
 				t.start();			

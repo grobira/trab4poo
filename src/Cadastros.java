@@ -23,6 +23,7 @@ public class Cadastros {
 			String csv;
 			while ((csv = in.readLine()) != null) {
 				users.add(new User(csv));
+				System.out.println("add!!");
 			}
 			in.close();
 		} catch (FileNotFoundException e) {
@@ -54,5 +55,14 @@ public class Cadastros {
 			e.printStackTrace();
 		}		
 	}
-	
+
+	public User searchUser(String nome){
+		for(User temp : users){
+			if(temp.getNome() == nome){
+				return temp;
+			}
+		}
+		
+		return null;
+	}
 }

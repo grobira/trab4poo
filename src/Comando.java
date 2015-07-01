@@ -8,52 +8,33 @@ public class Comando {
 		String comando = "";
 		System.out.println("1 fazer login 2 cadastrar user 3 listar produtos 4 comprar");
 		Scanner scan = new Scanner(System.in);
-		int resp = scan.nextInt();
+		int resp = Integer.parseInt(scan.nextLine());
 		comando = comando + resp;		
 		if(resp == 1){
-			scan.close();
-			comando = comando + fazerLogin();
+			System.out.println("Entre com o login:");
+			String lg = scan.nextLine();
+			System.out.println("Entre com a senha:");
+			String sn = scan.nextLine();
+			comando = comando + "," + lg;
+			comando = comando + "," + sn;
 		}else if(resp == 2){
-			scan.close();
-			comando = comando + cadastrarUser();
+			System.out.println("Entre com o login:");
+			comando = ","+ scan.nextLine();
+			System.out.println("Entre com o endereco:");
+			comando.concat("," + scan.nextLine());
+			System.out.println("Entre com o telefone:");
+			comando.concat(","+ scan.nextLine());
+			System.out.println("Entre com o email:");
+			comando.concat("," + scan.nextLine());
+			System.out.println("Entre com o ID:");
+			comando.concat(","+ scan.nextLine());
+			System.out.println("Entre com a senha:");
+			comando.concat("," + scan.nextLine());
+			
 		}else if(resp == 3){
 			scan.close();
 			return comando;
 		}
-				
-		return comando;
-	}
-	
-	public String fazerLogin(){
-		Scanner scan = new Scanner(System.in);
-		String comando = "";
-		
-		
-		System.out.println("login:");
-		comando.concat(","+ scan.nextLine());
-		System.out.println("senha:");
-		comando.concat("," + scan.nextLine());
-		
-		scan.close();
-		return comando;
-	}
-	
-	public String cadastrarUser(){
-		Scanner scan = new Scanner(System.in);
-		String comando = "";
-		
-		System.out.println("Entre com o login:");
-		comando.concat(","+ scan.nextLine());
-		System.out.println("Entre com o endereco:");
-		comando.concat("," + scan.nextLine());
-		System.out.println("Entre com o telefone:");
-		comando.concat(","+ scan.nextLine());
-		System.out.println("Entre com o email:");
-		comando.concat("," + scan.nextLine());
-		System.out.println("Entre com o ID:");
-		comando.concat(","+ scan.nextLine());
-		System.out.println("Entre com a senha:");
-		comando.concat("," + scan.nextLine());
 		
 		scan.close();
 		return comando;
