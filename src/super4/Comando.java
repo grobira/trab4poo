@@ -7,6 +7,7 @@ public class Comando {
 	}
 	
 	public String readLine(){
+		@SuppressWarnings("resource")
 		Scanner scan = new Scanner(System.in);
 		String test = null;
 			test = scan.nextLine();
