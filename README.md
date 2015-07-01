@@ -15,5 +15,7 @@ Para a execução devesse executar o SystemCaixa.jar, esse corresponde ao servid
 Colaboradores: 
 
 Giovanni Robira   8531887
+
 Victor Luiz da Silva Mariano Perreira   8602444
+
 Jorge Ashkar Ferreira Simondi   8517081
