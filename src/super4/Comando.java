@@ -2,8 +2,6 @@ package super4;
 import java.util.Scanner;
 
 
-
-
 public class Comando {
 	public Comando(){}
 	
