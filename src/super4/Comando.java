@@ -5,60 +5,66 @@ import java.util.Scanner;
 public class Comando {
 	public Comando() {
 	}
+	
+	public String readLine(){
+		Scanner scan = new Scanner(System.in);
+		String test = null;
+			test = scan.nextLine();
+		
+
+		return test;
+	}
 
 	public String escolheComando() {
 		String comando = "";
 		System.out
 				.println("Escolha :\n[1] Para fazer login.\n[2] Para novo cadastro.\n[3] Para listar produtos.\n[4] Para efetuar uma comprar.\n[5] Para sair ");
-		Scanner scan = new Scanner(System.in);
-		String test = scan.nextLine();
-		int resp = Integer.parseInt(test);
+
+		int resp = Integer.parseInt(readLine());
 		comando = comando + resp;
 
 		if (resp == 1) {
 
 			System.out.println("Entre com o login :");
-			String lg = scan.nextLine();
+			String lg = readLine();
 			System.out.println("Entre com a senha :");
-			String sn = scan.nextLine();
+			String sn = readLine();
 			comando = comando + "," + lg;
 			comando = comando + "," + sn;
 
 		} else if (resp == 2) {
 
 			System.out.println("Entre com o login :");
-			String aux = scan.nextLine();
+			String aux = readLine();
 			comando = comando + "," + aux;
 			System.out.println("Entre com o endereco :");
-			aux = scan.nextLine();
+			aux = readLine();
 			comando = comando + "," + aux;
 			System.out.println("Entre com o telefone :");
-			aux = scan.nextLine();
+			aux = readLine();
 			comando = comando + "," + aux;
 			System.out.println("Entre com o email :");
-			aux = scan.nextLine();
+			aux = readLine();
 			comando = comando + "," + aux;
 			System.out.println("Entre com a senha :");
-			aux = scan.nextLine();
+			aux = readLine();
 			comando = comando + "," + aux;
 
 		} else if (resp == 3 || resp == 5) {
 
-			scan.close();
 			return comando;
 
 		} else if (resp == 4) {
 
 			System.out.println("Entre com o nome do produto :");
-			String aux = scan.nextLine();
+			String aux = readLine();
 			comando = comando + "," + aux;
 			System.out.println("Entre com a quantidade :");
-			aux = scan.nextLine();
+			aux = readLine();
 			comando = comando + "," + aux;
 
 		}
 
-		scan.close();
 		return comando;
 	}
 }

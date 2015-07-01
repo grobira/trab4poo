@@ -73,8 +73,9 @@ public class ConectServer implements Runnable {
 			try {
 				out = new PrintWriter(s.getOutputStream(), true);
 				for(Produto p : e.produtosCadastrados){
-					out.print(p.print());
+					out.println(p.print());
 				}
+				out.println("ok");
 				out.flush();
 			} catch (IOException e) {
 				e.printStackTrace();

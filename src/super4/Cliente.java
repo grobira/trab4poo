@@ -41,10 +41,11 @@ public class Cliente {
 						if(resp.equals("ok"))
 							break;
 						System.out.println(resp);
+						if(resp.equals("Login aceito!!")){
+							logado = true;
+						}
 					}
-					if(resp.equals("Login aceito!!")){
-						logado = true;
-					}
+
 				}
 			} catch (UnknownHostException e) {
 				e.printStackTrace();
