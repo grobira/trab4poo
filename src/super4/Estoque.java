@@ -115,6 +115,7 @@ public class Estoque {
 			
 			p.setQuantidade(p.getQuantidade() + Integer.parseInt(quant));
 			System.out.println("Estoque reposto com sucesso!");
+			rewrite();
 			return 1;
 		}else{
 			System.out.println("Produto não cadastrado!");
