@@ -19,12 +19,12 @@ public class Cliente {
 		String resp;
 		
 		try {
+			
 			socket = new Socket("127.0.0.1", 12345);
 			pw = new PrintWriter(socket.getOutputStream(), true);
 			br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			pw.println(command);
 			pw.flush();
-
 			
 			while((resp = br.readLine()) != null){
 				System.out.println(resp);

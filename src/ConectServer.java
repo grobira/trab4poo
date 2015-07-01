@@ -42,23 +42,39 @@ public class ConectServer implements Runnable {
 		
 		if(op == 1){
 			result = login(values[1], values[2]);
-			System.out.println("entrou na op");
 			try {
 				out = new PrintWriter(s.getOutputStream(), true);
 				
 				if(result){
-					out.println("Login accepted!!");
+					out.println("Login aceito!!");
 				}else
-					out.println("Login denied!!");
+					out.println("Login negado!!");
 				out.flush();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}		
 			
 		}else if(op == 2){
-			
+			c.adicionaUser(new User(values[1], values[2], values[3], values[4], c.users.size()+1, values[6]));
+			try {
+				out = new PrintWriter(s.getOutputStream(), true);
+				out.println("Usuario cadastrado com sucesso!");
+				out.flush();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}else if(op == 3){
-			
+			try {
+				out = new PrintWriter(s.getOutputStream(), true);
+				int i = 0;
+				while(i < e.produtosCadastrados.size()){
+					out.print(e.produtosCadastrados.get(i).print());
+					i++;
+				}
+				out.flush();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 		
 	}

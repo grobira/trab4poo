@@ -18,8 +18,18 @@ public class User {
 		this.senha = values[5];
 	}
 	
+	public User(String nome, String endereco, String telefone, String email, int ID, String senha){
+		
+		this.nome = nome;
+		this.endereco = endereco;
+		this.telefone = telefone;
+		this.email = email;
+		this.ID = ID;
+		this.senha = senha;
+	}
+	
 	boolean validaLogin(String pass){
-		if(this.senha == pass)
+		if(this.senha.equals(pass))
 			return true;
 		return false;
 	}

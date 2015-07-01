@@ -22,7 +22,7 @@ public class Produto {
 		
 		String[] values = csv.split(",");
 		this.nome = values[0];
-		this.preco = Integer.parseInt(values[1]);
+		this.preco = Double.parseDouble(values[1]);
 		this.dataDeValidade = values[2];
 		this.fornecedor = values[3];
 		this.quantidade = Integer.parseInt(values[4]);
@@ -63,6 +63,11 @@ public class Produto {
 
 	public String getFornecedor() {
 		return fornecedor;
+	}
+	
+	public String print(){
+		String str = "Nome : " + nome + "\nPreço : " + preco + "\nValidade : " + dataDeValidade + "\nFornecedor : " + fornecedor + "\nQuantidade : " + quantidade + "\n";
+		return str;
 	}
 
 	public String toStringCSV(){

@@ -10,7 +10,7 @@ public class SistemaCaixa {
 		Estoque armazen = new Estoque();
 		Cadastros cads = new Cadastros();
 		
-		cads.adicionaUser(new User("robira,fodase,90900909,grobira,1,robira"));
+		//armazen.adicionaProduto(new Produto("veja,10.9,20/10/2015,mercado,10"));
 		
 		ServerSocket listener;
 		Socket socket;

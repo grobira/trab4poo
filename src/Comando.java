@@ -11,25 +11,31 @@ public class Comando {
 		int resp = Integer.parseInt(scan.nextLine());
 		comando = comando + resp;		
 		if(resp == 1){
+		
 			System.out.println("Entre com o login:");
 			String lg = scan.nextLine();
 			System.out.println("Entre com a senha:");
 			String sn = scan.nextLine();
 			comando = comando + "," + lg;
 			comando = comando + "," + sn;
+		
 		}else if(resp == 2){
+			
 			System.out.println("Entre com o login:");
-			comando = ","+ scan.nextLine();
+			String aux = scan.nextLine();
+			comando = comando + "," + aux;
 			System.out.println("Entre com o endereco:");
-			comando.concat("," + scan.nextLine());
+			aux = scan.nextLine();
+			comando = comando + "," + aux;
 			System.out.println("Entre com o telefone:");
-			comando.concat(","+ scan.nextLine());
+			aux = scan.nextLine();
+			comando = comando + "," + aux;
 			System.out.println("Entre com o email:");
-			comando.concat("," + scan.nextLine());
-			System.out.println("Entre com o ID:");
-			comando.concat(","+ scan.nextLine());
+			aux = scan.nextLine();
+			comando = comando + "," + aux;
 			System.out.println("Entre com a senha:");
-			comando.concat("," + scan.nextLine());
+			aux = scan.nextLine();
+			comando = comando + "," + aux;
 			
 		}else if(resp == 3){
 			scan.close();
