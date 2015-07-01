@@ -9,7 +9,6 @@ import java.net.UnknownHostException;
 
 public class Cliente {
 
-	@SuppressWarnings("null")
 	public static void main(String[] args) {
 		Comando op = new Comando();
 		
@@ -39,6 +38,8 @@ public class Cliente {
 					pw.flush();
 			
 					while((resp = br.readLine()) != null){
+						if(resp.equals("ok"))
+							break;
 						System.out.println(resp);
 					}
 					if(resp.equals("Login aceito!!")){

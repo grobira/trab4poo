@@ -49,8 +49,11 @@ public class ConectServer implements Runnable {
 				
 				if(result){
 					out.println("Login aceito!!");
-				}else
+					out.println("ok");
+				}else{
 					out.println("Login negado!!");
+					out.println("ok");
+				}
 				out.flush();
 			} catch (IOException e) {
 				e.printStackTrace();
@@ -61,6 +64,7 @@ public class ConectServer implements Runnable {
 			try {
 				out = new PrintWriter(s.getOutputStream(), true);
 				out.println("Usuario cadastrado com sucesso!");
+				out.println("ok");
 				out.flush();
 			} catch (IOException e) {
 				e.printStackTrace();
@@ -85,11 +89,16 @@ public class ConectServer implements Runnable {
 					if(result){
 						p.setQuantidade(p.getQuantidade() - Integer.parseInt(values[2]));
 						out.println("Compra efetuada com sucesso!\nValor parcial : " + p.getPreco() +"\nValor total da compra : " + p.getPreco()*Integer.parseInt(values[2]));
+						out.println("ok");
 						rw = 1;
-					}else
+					}else{
 						out.println("Quantidade indisponivel! Temos apenas " + p.getQuantidade());
-				}else
+						out.println("ok");
+					}
+				}else{
 					out.println("Produto não cadastrado no sistema!");
+					out.println("ok");
+				}
 				
 				
 				out.flush();

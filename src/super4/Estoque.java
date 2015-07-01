@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Estoque {
 	List<Produto> produtosCadastrados;
@@ -85,6 +86,39 @@ public class Estoque {
 			pw.close();
 		}catch (FileNotFoundException e) {
 			e.printStackTrace();
+		}
+	}
+	
+	public void novoProduto(Scanner scan){
+		
+		System.out.println("Entre com o nome do produto :");
+		String nome = scan.nextLine();
+		System.out.println("Entre com o preco do produto :");
+		String preco = scan.nextLine();
+		System.out.println("Entre com a data de validade (dd/mm/aaaa) :");
+		String data = scan.nextLine();
+		System.out.println("Entre com o fornecedor do produto :");
+		String forn = scan.nextLine();	
+		
+		adicionaProduto(new Produto(nome, Double.parseDouble(preco), data, forn));
+	}
+	
+	public int repoemEstoque(Scanner scan){
+		
+		System.out.println("Entre com o nome do produto para repor :");
+		String nome = scan.nextLine();
+		
+		Produto p = searchProduto(nome);
+		if(p != null){
+			System.out.println("Entre com a quantidade que irá ser adicionada :");
+			String quant = scan.nextLine();
+			
+			p.setQuantidade(p.getQuantidade() + Integer.parseInt(quant));
+			System.out.println("Estoque reposto com sucesso!");
+			return 1;
+		}else{
+			System.out.println("Produto não cadastrado!");
+			return 0;
 		}
 	}
 }
